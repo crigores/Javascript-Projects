@@ -1,0 +1,13 @@
+/* .banner-pkmn{
+    background: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ffe9e045-de6b-441e-b8e3-ce197b16f148/d9swibx-7d2b1260-a556-4e75-958b-9dd28aa360eb.png/v1/fill/w_1024,h_240,q_75,strp/pokemon_20th_anniversary_banner_by_masterball_creations-d9swibx.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl0sIm9iaiI6W1t7InBhdGgiOiIvZi9mZmU5ZTA0NS1kZTZiLTQ0MWUtYjhlMy1jZTE5N2IxNmYxNDgvZDlzd2lieC03ZDJiMTI2MC1hNTU2LTRlNzUtOTU4Yi05ZGQyOGFhMzYwZWIucG5nIiwid2lkdGgiOiI8PTEwMjQiLCJoZWlnaHQiOiI8PTI0MCJ9XV19.NtCCRr30feHMhw7taSECYkOZJ3M4ZFGjJhBQhZbpLoo');   
+    background-size: cover;
+    background-repeat: no-repeat;
+} */
+
+#loading {
+    display: none;
+}
+
+.capitalize{
+    text-transform: capitalize;
+}

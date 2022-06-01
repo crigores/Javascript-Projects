@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christopher Rigores</title>
+</head>
+<body>
+    <script>
+        // CREACION DEL OBJETO
+        var lista = [
+            {
+                nombre: "Arroz",
+                cantidad: 20,
+                descuento: 10,
+                precio: 5,
+                precioNeto: 4.5
+            },
+            {
+                nombre: "Harina",
+                cantidad: 20,
+                descuento: 20,
+                precio: 6,
+                precioNeto: 4.8
+            }
+        ];
+
+        // REPETICION DEL MENSAJE CADA CIERTO TIEMPO
+        function tryAgain(){
+            setInterval(message, 5000);
+        }
+
+        // MENSAJE PROMPT
+        function message(){
+            var res = prompt("Quieres añadir un nuevo Artículo? Si / No");
+            if(res.length > 0){
+                res = res.toLowerCase();
+                
+                if ( res == "si"){
+                    agregarProducto();
+                }
+                else if( res === "no"){
+                    var estadistica = prompt("Quiere realizar la estadística con los productos actuales?");
+                    if(estadistica.length>0){
+                        estadistica = estadistica.toLowerCase();
+                        
+                        if(estadistica === "si"){
+                            realizarEstadisticas();
+                        }
+                        else this.tryAgain();
+                    }
+                }
+            }
+        }
+
+        // AGREGADO DE PRODUCTO
+        function agregarProducto(){
+            var i = lista.length;
+
+            var nombre = prompt("Introduzca el nombre del producto");
+            var cantidad = prompt("Introduzca la cantidad del producto");
+            var descuento = prompt("Introduzca el descuento del producto");
+            var precio = prompt("Introduzca el precio del producto");
+
+            if( nombre.length > 0 && cantidad.length > 0 && descuento.length > 0 && precio.length > 0 ){
+            
+            cantidad = parseInt(cantidad);
+            precio = parseFloat(precio);
+            descuento = parseFloat(descuento);
+            
+            
+            var resultado = (precio * descuento) / 100;
+            var neto = precio - resultado;
+
+                var añadirObjeto = {
+                    nombre,
+                    cantidad,
+                    precio,
+                    descuento: resultado,
+                    precioNeto: neto
+                }
+            }
+            lista.push(añadirObjeto);
+            
+            
+        }
+
+        // ESTADISTICAS
+        function realizarEstadisticas(){
+            var position = 0;
+
+            // SIN DESCUENTO 
+            var precioMayor = 0;
+            var precioMenor = 999999;
+            var flag_mayor = 0;
+            var flag_menor = 0;
+
+            // CON DESCUENTO 
+            var precioMayorDescuento = 0;
+            var precioMenorDescuento = 99999;
+            var flag_mayor_descuento = 0;
+            var flag_menor_descuento = 0;
+
+            // ACUMULADORES
+            var acumBruto = 0;
+            var acumNeto  = 0;
+            var totalProductos = 0;
+
+
+            for (const iterator of lista) {
+                if(precioMayor <= iterator.precio) {
+                    precioMayor = iterator.precio;
+                    flag_mayor = position;
+                }
+                if(precioMenor > iterator.precio) {
+                    precioMenor = iterator.precio;
+                    flag_menor = position;
+                }
+
+                
+                if(precioMayorDescuento <= iterator.precioNeto ){
+                    precioMayorDescuento = iterator.precioNeto;
+                    flag_mayor_descuento = position;
+                }
+                if(precioMenorDescuento >= iterator.precioNeto){
+                    precioMenorDescuento = iterator.precioNeto;
+                    flag_menor_descuento = position;
+                }
+
+                acumBruto += iterator.precio;
+                acumNeto += iterator.precioNeto;   
+                totalProductos += iterator.cantidad;
+                position++;
+            }
+
+            console.log( " LISTADO DE PRODUCTO ");
+            console.table(lista);
+
+
+            console.log( " Estadísticas ");
+            console.log( `Total de Productos`);
+            console.log( `Total de Tipo de Productos ${lista.length}`);
+            console.log( `Total de Cantidad de Productos ${totalProductos}`);
+            
+            console.log( `Productos más costoso`);
+            console.log( `Producto más costoso con descuento ${lista[flag_mayor_descuento].nombre}`);
+            console.log( `Producto más costoso sin descuento ${lista[flag_mayor].nombre}`);
+
+            console.log( `Productos más barato`);
+            console.log( `Producto más barato con descuento ${lista[flag_menor_descuento].nombre}`);
+            console.log( `Producto más barato sin descuento ${lista[flag_menor].nombre}`);
+
+            console
+            console.log( `Total de Bruto ${acumBruto}`);
+            console.log( `Total de Neto ${acumNeto}`);
+        }
+        
+        
+        // STARTER
+        tryAgain();
+    </script>
+</body>
+</html>
